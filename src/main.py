@@ -7,13 +7,18 @@ from dotenv import load_dotenv
 # --------------------------------------------------------------------------------------
 load_dotenv()
 
+
+# Creating global variables
+RAW_FILE_DESTINATION = getenv("RAW_FILE_DESTINATION")
+PARTITIONED_FILE_DESTINATION = getenv("PARTITIONED_FILE_DESTINATION")
+LOG_LOCATION="./logs/main.log"
 LOG = logging.getLogger()
 
 def initLogger() -> None:
     # Configure logging settings
     logging.basicConfig(level=logging.DEBUG,
                         format='%(asctime)s - %(levelname)s - %(message)s',
-                        filename='app.log',
+                        filename=LOG_LOCATION,
                         filemode='w')
 
     # Create a StreamHandler and set the level to DEBUG
@@ -26,10 +31,6 @@ def initLogger() -> None:
 
     # Add the StreamHandler to the logger
     LOG.addHandler(console_handler)
-
-# Creating global variables
-RAW_FILE_DESTINATION = getenv("RAW_FILE_DESTINATION")
-PARTITIONED_FILE_DESTINATION = getenv("PARTITIONED_FILE_DESTINATION")
 
 # --------------------------------------------------------------------------------------
 
