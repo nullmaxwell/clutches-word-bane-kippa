@@ -1,6 +1,9 @@
 import glob
+import logging
 import paramiko
 from os import getenv
+
+LOG = logging.getLogger()
 
 
 class SFTP:
@@ -27,12 +30,14 @@ class SFTP:
 
         # List files in the remote directory
         remote_files = sftp.listdir(remote_dir)
+        LOG.info(f"{len(remote_files)} identified in remote path, downloading...")
 
         # Download each file to the local directory
         for filename in remote_files:
             remote_file_path = f"{remote_dir}/{filename}"
             local_file_path = f"{local_dir}/{filename}"
             sftp.get(remote_file_path, local_file_path)
+            LOG.info(f"Successfully downloaded {filename} to {local_file_path}")
 
         sftp.close()
         transport.close()
@@ -52,11 +57,13 @@ class SFTP:
 
         # List files in the local directory
         files = glob.glob(f"{local_dir}/*.csv")
+        LOG.info(f"{len(files)} identified in local path for upload...")
 
         # Upload each file to the remote directory
         for filename in files:
             remote_file_path = f"{remote_dir}/{filename}"
             sftp.put(filename, remote_file_path)
+            LOG.info(f"Successfully uploaded {filename} to {remote_file_path}.")
 
         sftp.close()
         transport.close()
