@@ -51,7 +51,7 @@ clean_env:
 env_update:
 ifeq (True,$(HAS_MICROMAMBA))
 	@echo ">>> Detected micromamba, exporting environment..."
-	micromamba env export --no-builds > prod_env.yml && sed -i 's/$(PROJECT_NAME)/base/g' prod_env.yml
+	micromamba env export --no-build > prod_env.yml && sed -i 's/$(PROJECT_NAME)/base/g' prod_env.yml
 	@echo ">>> prod_env.yml successfully updated..."
 	echo "-e ." > requirements.txt && pip list --format=freeze >> requirements.txt
 	@echo ">>> requirements.txt successfully updated..."
