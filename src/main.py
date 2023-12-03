@@ -44,7 +44,7 @@ def main():
     files = glob.glob(f"{RAW_FILE_DESTINATION}/*.csv")
     LOG.info(f"{len(files)} raw file(s) identified.")
 
-    # Process Files
+    # Read, aggregate and group all files found in source directorg
     grouped_df = pd.concat(
         [pd.read_csv(_) for _ in files], axis=0, ignore_index=True
     ).groupby("Drug Name")
