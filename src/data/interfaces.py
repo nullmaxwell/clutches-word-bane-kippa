@@ -36,6 +36,7 @@ class SFTP:
 
         sftp.close()
         transport.close()
+        return
 
     def pushDataToRemote(
         host: str = getenv("SFTP_HOST"),
@@ -59,3 +60,4 @@ class SFTP:
 
         sftp.close()
         transport.close()
+        return
