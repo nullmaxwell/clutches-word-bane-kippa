@@ -1,0 +1,32 @@
+name: "clutches-word-bane-kippa"
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # General Python Requirements
+  - python=3.12
+  - python-dotenv
+  - pip
+  - build
+  - flake8
+  - black
+
+  # Python Testing Frameworks
+  - coverage
+  - pytest
+
+  # Main Python dependencies
+  - ipykernel
+  - rich
+  - click # Handling Command Line Parameters and Options
+  - nbformat # Jupyter Notebook formatting
+  - numpy
+  - pandas
+  - paramiko
+
+  # pip specific packages that are unavailable with conda
+  - pip:
+      - -e . # Local package installation
+

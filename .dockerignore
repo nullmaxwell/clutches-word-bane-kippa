@@ -1,0 +1,15 @@
+# Directories to ignore for image building
+./DAGSTER_HOME/
+./docs/
+./notebooks/
+./reports/
+./tests/
+
+# Files to ignore for image building
+./dev_env.yml
+./Makefile
+README.md
+requirements.txt
+setup.py
+test_environment.py
+tox.ini
